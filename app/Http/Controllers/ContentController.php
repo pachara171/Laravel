@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ContentController extends Controller
 {
     public function index() {
-        $contents = Content::all();
+        $contents = Content::paginate(5);
 
         return view('content.index', compact('contents'));
     }
@@ -46,9 +46,9 @@ class ContentController extends Controller
         $data->topic = $value->topic;
         $data->description = $value->description;
         $data->tags = $value->tags;
-        $data->user_id = 1;
+        $data->user_id = auth()->id();
         $data->save();
     }
-
+    
     
 }
