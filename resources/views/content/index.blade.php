@@ -12,8 +12,9 @@
                 <th>ID</th>
                 <th>หัวข้อ</th>
                 <th>TAG</th>
+                <th>ผู้เขียน</th>
                 <th>วันที่สร้าง</th>
-                <th>แก้ไข</th>
+                <th style="width: 150px"></th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,7 @@
                 <td>{{ $content->id }}</td>
                 <td>{{ $content->topic }}</td>
                 <td>{{ $content->tags }}</td>
+                <td>{{ $content->user->name }}</td>
                 <td>{{ $content->created_at->format('d/m/Y h:i') }}</td>
                 <td style="width: 7.5rem">
                     <a href="{{ url("content/{$content->id}/edit") }}" role="button" class="btn btn-sm btn-warning">Edit</a>
@@ -32,6 +34,8 @@
             
         </tbody>
     </table>
+
+    {{$contents->links()}}
     
 @endsection
 
